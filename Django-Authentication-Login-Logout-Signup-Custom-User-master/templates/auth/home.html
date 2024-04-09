@@ -29,4 +29,15 @@
     </div>
 </div>
 
+
+<br><br>
+      <form action = "search" method = "post">
+        {% csrf_token %}
+        <input type="text" placeholder="Search Courses" name="search">
+        <button>
+            <input type="submit" value="Send Email" /> 
+
+        </button>
+    </form>
+
 {% endblock body %}
