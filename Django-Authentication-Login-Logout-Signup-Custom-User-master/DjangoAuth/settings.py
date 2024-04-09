@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'DjangoAuth.wsgi.application'
 DATABASES = {
 
      'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'atikGohel',
-        'USER' : 'root',
-        'PASSWORD' : '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'user1',
+        'USER' : 'postgres',
+        'PASSWORD' : '803621',
         'HOST': 'localhost',
-        'PORT' : '3306',
+        'PORT' : '',
     }
 }
 
@@ -135,6 +135,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 
 LOGIN_REDIRECT_URL = 'home'
