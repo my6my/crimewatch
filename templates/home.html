@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Hi {{ user.username }}!</p>
+<style>
+  form {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+</style>
+<p><a href="{% url 'password_change' %}">Password Change</a></p>
+<form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <button type="submit">Log Out</button>
+</form>
+
+<h2>Crime Analysis Form</h2>
+<form action="submit_action" method="post">
+  {% csrf_token %}
+    <label for="province">Province:</label>
+    <input type="text" id="province" name="province" placeholder="Enter province name..." required>
+
+    <label for="country">Country:</label>
+    <input type="text" id="country" name="country" placeholder="Enter country name..." required>
+
+    <input type="submit" value="Submit">
+</form>
+
+{% else %}
+<p>You are not logged in</p>
+<p><a href="{% url 'password_reset' %}">Password Reset</a></p>
+<p><a href="{% url 'login' %}">Log In</a></p>
+{% endif %}
+{% endblock %}
